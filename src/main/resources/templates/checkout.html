@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="fragments/general.html :: header"> </header>
+<table>
+	<tr>
+		<td><b><span th:text="Hello">...</span> <span th:text=${customerDetail.name}>...</span></b></td>
+	</tr>
+    <tr>
+    	<td width="15%">
+    		<div><img th:src="@{${bookDetail.coverImageUrl}}" width="200px" height="300px"></div>
+		</td>
+    	<td width="25%" valign="top">
+    		<table>
+		        <tr>
+		        	<td data-th-text="${bookDetail.name}"  valign="top">...</td>
+		        </tr>
+		        <tr>
+		        	<td align="left">$<span th:text="${bookDetail.priceUsd}" align="left"/>
+		        </tr>
+		        <tr>		   
+		        	<td align="left">amount <span th:text="${buy.quantity}" align="left"/>     	
+		        </tr>
+		        <tr>		        	
+		        	<td>&nbsp;</td>
+		        </tr>
+		        <tr>
+		        	<td align="left">Total Price:<span th:text="${buy.quantity} * ${bookDetail.priceUsd}" align="left"/>     
+		        </tr>
+			</table>
+		</td> 
+		<td width="60%"/>               
+    </tr>
+     <tr>
+     	<form action="#" th:action="@{/confirmOrder}" method="post">
+
+     	<td colspan="3" align="left"><input type="submit" value="Confirm Order" /></td>
+     	</form>
+     </tr>		        
+    
+</table>    
+</body>
+</html>

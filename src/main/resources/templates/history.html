@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="fragments/general.html :: header"> </header>
+<table>
+    <tr data-th-each="orderDetail : ${history}">
+    	<td width="15%">
+    		<div th:text="${#calendars.format(orderDetail.orderDate,'dd/MM/yyyy - HH:mm:ss')}"/></div>
+    		<div><img th:src="@{${orderDetail.bookDetail.coverImageUrl}}" width="200px" height="300px"></div>
+		</td>
+    	<td width="25%" valign="top">
+    		<table>
+		        <tr>
+		        	<br/>
+		        	<td data-th-text="${orderDetail.bookDetail.name}"  valign="top">...</td>
+		        </tr>
+		        <tr>
+		        	<td align="left">$<span th:text="${orderDetail.bookDetail.priceUsd}" align="left"/>
+		        </tr>
+		        <tr>		   
+		        	<td align="left">amount <span th:text="${orderDetail.quantity}" align="left"/>     	
+		        </tr>
+		        <tr>		        	
+		        	<td>&nbsp;</td>
+		        </tr>
+		        <tr>
+		        	<td align="left">Total Price: $<span th:text="${orderDetail.totalAmount}" align="left"/>     
+		        </tr>
+			</table>
+		</td> 
+		<td width="60%"/>               
+    </tr>
+</table>    
+</body>
+</html>

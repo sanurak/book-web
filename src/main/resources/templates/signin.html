@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="fragments/general.html :: header"> </header>
+<h1><b>Please Sign in</b></h1>
+<div th:text="${error}">...</div>
+<form action="#" th:action="@{/doSignIn}" th:object="${signin}" method="post">
+<!-- 	<input type="hidden" id="from" name="from" value="${from}"> -->
+	<table>
+	    <tr>
+	    	<td width="15%">
+	    		Email
+			</td>	    	
+	    	<td width="15%">
+	    		<div><input type="text" th:field="*{email}" /></div>
+			</td>
+			<td width="60%"/>
+		</tr>
+	    <tr>
+	    	<td width="15%">
+	    		Password
+			</td>	    	
+	    	<td width="15%">
+	    		<div><input type="password" th:field="*{password}" /></div>
+			</td>
+			<td width="60%"/>
+		</tr>		
+		
+	    <tr>
+	    	<td colspan="2" width="30%">
+	    		<div><input type="submit" value="Sign in" /></div>
+			</td>
+			<td width="60%"/>
+	</table>
+</form>    
+</body>
+</html>

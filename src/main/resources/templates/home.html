@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<header th:insert="fragments/general.html :: header"> </header>
+<h1><b>Recommended book for you.</b></h1>
+<div th:text="${error}">...</div>
+<table>
+    <tr data-th-each="bookDetail : ${bookDetailList}">
+    	<td width="15%">
+    		<div><img th:src="@{${bookDetail.coverImageUrl}}" width="200px" height="300px"></div>
+		</td>
+    	<td width="25%" valign="top">
+    		<table>
+		        <tr>
+		        	<td data-th-text="${bookDetail.name}"  valign="top">...</td>
+		        	<td data-th-text="${bookDetail.priceUsd}" align="right">...</td>
+		        </tr>
+		        <tr><td data-th-text="${bookDetail.description}" valign="top"  colspan="2">...</td></tr>
+		        <tr>
+		        	<form action="#" th:action="@{/}" th:object="${buy}" method="post">
+    				<input type="hidden" id="bookId" name="bookId"  th:value="${bookDetail.id}"/>
+
+		        	<td>Quantity <input type="text"  id="quantity" name="quantity" value="1" size="2"/></td>
+		        	<td align="right"><input type="submit" value="Buy" /></td>
+		        	</form>
+		        </tr>		        
+			</table>
+		</td> 
+		<td width="60%"/>               
+    </tr>
+</table>    
+</body>
+</html>
