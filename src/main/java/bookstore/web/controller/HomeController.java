@@ -201,7 +201,6 @@ public class HomeController {
 		// check from session. if not logged in go to sign in page
 		if (customerDetail.getId() == 0) {
 			SignIn signIn = new SignIn();
-			signIn.setEmail("steve@email.com");
 
 			model.addAttribute("signin", signIn);
 
